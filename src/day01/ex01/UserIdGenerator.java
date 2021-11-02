@@ -1,4 +1,4 @@
-package day01.ex00.ex01;
+package day01.ex01;
 
 public class UserIdGenerator {
     // singleton pattern
