@@ -14,5 +14,7 @@ public class Program {
         UUID id2 = UUID.randomUUID();
         Transaction transaction3 = new Transaction(id2, John, Mike, TransferCategory.CREDITS, -5000);
         Transaction transaction4 = new Transaction(id2, Mike, John, TransferCategory.DEBITS, 5000);
+
+        // test other cases
     }
 }
