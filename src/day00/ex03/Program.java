@@ -8,16 +8,20 @@ public class Program {
         Scanner scanner = new Scanner(System.in);
         for (int i = 1; i < 42; i++) {
             if (i > 18) {
+                scanner.close();
                 ftError("must be less than 18 weeks");
             }
             if (scanner.hasNextInt() && scanner.nextInt() == 42) {
                 printResult(grades);
+                scanner.close();
                 System.exit(0);
             }
             if (!"Week".equals(scanner.next())) {
+                scanner.close();
                 ftError("must be 'Week'");
             } else {
                 if (scanner.hasNextInt() && scanner.nextInt() != i) {
+                    scanner.close();
                     ftError("wrong order of weeks");
                 } else {
                     grades = packGrade(grades, getMinimalGrade(scanner));
@@ -27,9 +31,6 @@ public class Program {
     }
 
     private static void printResult(long grades) {
-        if (grades < 1) {
-            ftError("500 internal server error");
-        }
         int weeks = getNumberOfDigits(grades);
         long denominator = getDenominator(weeks);
         for (int i = 1; i <= weeks; i++) {
@@ -74,10 +75,12 @@ public class Program {
         int min = 10;
         for (int i = 0; i < 5; i++) {
             if (!scanner.hasNextInt()) {
+                scanner.close();
                 ftError("must be number");
             } else {
                 int next = scanner.nextInt();
                 if (next > 9 || next < 1) {
+                    scanner.close();
                     ftError("must be number between 1 and 9");
                 }
                 if (next < min)
@@ -88,7 +91,7 @@ public class Program {
     }
 
     private static void ftError(String error) {
-        System.out.println("Illegal Argument: " + error);
+        System.err.println("Illegal Argument: " + error);
         System.exit(-1);
     }
 }
