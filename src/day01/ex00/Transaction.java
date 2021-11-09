@@ -3,44 +3,47 @@ package day01.ex00;
 import java.util.UUID;
 
 public class Transaction {
-    private UUID identifier;
+    private UUID id;
     private User recipient;
     private User sender;
-    private TransferCategory transferCategory; // enum
-    private Integer amount; // for outgoing negative, for incoming positive
+    private TransferCategory transferCategory;
+    private Integer amount;
 
-    public Transaction(UUID identifier, User recipient, User sender, TransferCategory transferCategory, Integer amount) {
-        this.identifier = identifier;
+    public Transaction(UUID id, User recipient, User sender, TransferCategory transferCategory, Integer amount) {
+        this.id = id;
         this.recipient = recipient;
         this.sender = sender;
         this.transferCategory = transferCategory;
         this.amount = amount;
-        validateTransaction();
+        if (!validateTransaction())
+            return;
         makeTransaction();
-        System.out.println("Transaction #" + identifier + " SUCCESS");
+        System.out.println("Transaction #" + id + " SUCCESS: " +
+                sender.getName() + "  ->  " + recipient.getName() + " amount " + amount );
     }
 
-    private void validateTransaction() {
+    private boolean validateTransaction() {
         if (transferCategory == TransferCategory.CREDITS) {
             if ((recipient.getBalance() + amount) < 0) {
-                System.out.println("Transaction #" + identifier + " is invalid: insufficient funds");
-                System.exit(1);
+                System.out.println("Transaction #" + id + " is invalid: insufficient funds");
+                return false;
             }
             if (amount >= 0) {
-                System.out.println("Transaction #" + identifier + " is invalid: amount must be negative");
-                System.exit(1);
+                System.out.println("Transaction #" + id + " is invalid: amount must be negative");
+                return false;
             }
         }
-        if (transferCategory == TransferCategory.DEBITS) {
+        else {
             if ((sender.getBalance() - amount) < 0) {
-                System.out.println("Transaction #" + identifier + " is invalid: insufficient funds");
-                System.exit(1);
+                System.out.println("Transaction #" + id + " is invalid: insufficient funds");
+                return false;
             }
             if (amount <= 0) {
-                System.out.println("Transaction #" + identifier + " is invalid: amount must be positive");
-                System.exit(1);
+                System.out.println("Transaction #" + id + " is invalid: amount must be positive");
+                return false;
             }
         }
+        return true;
     }
 
     private void makeTransaction() {

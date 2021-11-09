@@ -23,6 +23,8 @@ public class Program {
             System.out.print(num + "  ");
         } else if (num < 100) {
             System.out.print(num + " ");
+        } else {
+            System.out.print(num);
         }
     }
 
@@ -31,6 +33,7 @@ public class Program {
         double coeff = arr[0][0] / 10.0;
         if (coeff == 0)
             return;
+        System.out.print("\n");
         for (int i = 11; i > 0; i--) {
             for (int j = 0; j < 10; j++) {
                 if (arr[0][j] != 0) {

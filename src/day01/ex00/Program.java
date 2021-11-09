@@ -10,11 +10,21 @@ public class Program {
         UUID id1 = UUID.randomUUID();
         Transaction transaction1 = new Transaction(id1, John, Mike, TransferCategory.CREDITS, -500);
         Transaction transaction2 = new Transaction(id1, Mike, John, TransferCategory.DEBITS, 500);
+        System.out.println(John + "   " + Mike);
 
         UUID id2 = UUID.randomUUID();
         Transaction transaction3 = new Transaction(id2, John, Mike, TransferCategory.CREDITS, -5000);
         Transaction transaction4 = new Transaction(id2, Mike, John, TransferCategory.DEBITS, 5000);
+        System.out.println(John + "   " + Mike);
 
-        // test other cases
+        UUID id3 = UUID.randomUUID();
+        Transaction transaction5 = new Transaction(id3, John, Mike, TransferCategory.CREDITS, 50);
+        Transaction transaction6 = new Transaction(id3, Mike, John, TransferCategory.DEBITS, -50);
+        System.out.println(John + "   " + Mike);
+
+        UUID id4 = UUID.randomUUID();
+        Transaction transaction7 = new Transaction(id4, Mike, John, TransferCategory.CREDITS, -42);
+        Transaction transaction8 = new Transaction(id4, John, Mike, TransferCategory.DEBITS, 42);
+        System.out.println(John + "   " + Mike);
     }
 }

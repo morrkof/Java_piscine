@@ -1,22 +1,22 @@
 package day01.ex00;
 
 public class User {
-    private Integer identifier;
+    private Integer id;
     private String name;
-    private Integer balance; // cannot be negative
+    private Integer balance;
 
-    public User(Integer identifier, String name, Integer balance) {
-        this.identifier = identifier;
+    public User(Integer id, String name, Integer balance) {
+        this.id = id;
         this.name = name;
         this.balance = balance;
     }
 
-    public Integer getIdentifier() {
-        return identifier;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdentifier(Integer identifier) {
-        this.identifier = identifier;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -37,5 +37,13 @@ public class User {
 
     public void addBalance(Integer amount) {
         this.balance += amount;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", balance=" + balance +
+                '}';
     }
 }
