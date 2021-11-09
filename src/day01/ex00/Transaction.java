@@ -7,9 +7,9 @@ public class Transaction {
     private User recipient;
     private User sender;
     private TransferCategory transferCategory;
-    private Integer amount;
+    private int amount;
 
-    public Transaction(UUID id, User recipient, User sender, TransferCategory transferCategory, Integer amount) {
+    public Transaction(UUID id, User recipient, User sender, TransferCategory transferCategory, int amount) {
         this.id = id;
         this.recipient = recipient;
         this.sender = sender;

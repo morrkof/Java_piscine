@@ -1,21 +1,24 @@
 package day01.ex00;
 
 public class User {
-    private Integer id;
+    private int id;
     private String name;
-    private Integer balance;
+    private int balance;
 
-    public User(Integer id, String name, Integer balance) {
+    public User(int id, String name, int balance) {
         this.id = id;
         this.name = name;
-        this.balance = balance;
+        if (balance > 0)
+            this.balance = balance;
+        else
+            this.balance = 0;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -27,15 +30,15 @@ public class User {
         this.name = name;
     }
 
-    public Integer getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    public void setBalance(Integer balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 
-    public void addBalance(Integer amount) {
+    public void addBalance(int amount) {
         this.balance += amount;
     }
 
