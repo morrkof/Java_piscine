@@ -1,4 +1,4 @@
-package day01.ex02;
+package day01.ex03;
 
 import day01.ex01.UserIdsGenerator;
 
@@ -6,6 +6,7 @@ public class User {
     private final int id;
     private String name;
     private int balance;
+    private TransactionsList transactionsList;
 
     public User(String name, int balance) {
         this.id = UserIdsGenerator.getInstance().generateId();
@@ -43,6 +44,10 @@ public class User {
 
     public void setBalance(int balance) {
         this.balance = balance;
+    }
+
+    public TransactionsList getTransactionsList() {
+        return transactionsList;
     }
 
     public void addBalance(int amount) {

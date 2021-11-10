@@ -1,6 +1,4 @@
-package day01.ex02;
-
-import java.util.Arrays;
+package day01.ex03;
 
 public class UsersArrayList implements UsersList {
     private User[] data;
