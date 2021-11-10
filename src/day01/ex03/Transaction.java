@@ -1,7 +1,5 @@
 package day01.ex03;
 
-import day01.ex00.User;
-
 import java.util.UUID;
 
 public class Transaction {
@@ -10,6 +8,46 @@ public class Transaction {
     private User sender;
     private TransferCategory transferCategory;
     private int amount;
+    private Transaction next;
+    private Transaction prev;
+
+    public void setNext(Transaction next) {
+        this.next = next;
+    }
+
+    public void setPrev(Transaction prev) {
+        this.prev = prev;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public User getRecipient() {
+        return recipient;
+    }
+
+    public User getSender() {
+        return sender;
+    }
+
+    public TransferCategory getTransferCategory() {
+        return transferCategory;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public Transaction getNext() {
+        return next;
+    }
+
+    public Transaction getPrev() {
+        return prev;
+    }
+
+    public Transaction() {}
 
     public Transaction(UUID id, User recipient, User sender, TransferCategory transferCategory, int amount) {
         this.id = id;
@@ -17,6 +55,8 @@ public class Transaction {
         this.sender = sender;
         this.transferCategory = transferCategory;
         this.amount = amount;
+        this.prev = null;
+        this.next = null;
         if (!validateTransaction())
             return;
         makeTransaction();
