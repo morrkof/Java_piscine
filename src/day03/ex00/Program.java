@@ -6,16 +6,20 @@ public class Program {
         if (args.length == 1)
             counter = getCounter(args[0]);
         int finalCounter = counter;
+
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
-                printMessage(finalCounter, "Egg");
+                for (int i = finalCounter; i > 0; i--)
+                    System.out.println("Egg");
             }
         });
+
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
-                printMessage(finalCounter, "Hen");
+                for (int i = finalCounter; i > 0; i--)
+                    System.out.println("Hen");
             }
         });
 
@@ -23,7 +27,8 @@ public class Program {
         t2.start();
         t1.join();
         t2.join();
-        printMessage(finalCounter, "Human");
+        for (int i = finalCounter; i > 0; i--)
+            System.out.println("Human");
     }
 
     private static int getCounter(String arg) {
@@ -39,10 +44,5 @@ public class Program {
             }
         }
         return counter;
-    }
-
-    private static void printMessage(int i, String msg) {
-        for (; i > 0; i--)
-            System.out.println(msg);
     }
 }
